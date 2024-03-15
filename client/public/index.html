@@ -5,97 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Sharing Platform</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Navbar Styles */
-        .navbar {
-            background-color: #1A3240;
-            color: #F1F2CC;
-            padding: 10px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar img {
-            height: 60px; /* Adjust size as needed */
-            width: 75px; /* Adjust size as needed */
-            margin-right: 10px;
-        }
-
-        .navbar-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        /* Main Content Styles */
-        .main-content {
-            display: flex;
-            height: calc(100vh - 50px); /* Adjust as needed */
-        }
-
-        .recipe-preview {
-            flex: 3;
-            background-color: #2A4250;
-            color: #F1F2CC;
-            padding: 20px;
-        }
-
-        .categories {
-            flex: 1;
-            background-color: #628370;
-            color: #F1F2CC;
-            padding: 20px;
-        }
-
-        /* Login Form Styles */
-        .login-form {
-            flex: 1;
-            background-color: #628370;
-            color: #1A3240;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .login-form input {
-            margin-bottom: 10px;
-            padding: 8px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .login-form button {
-            padding: 10px 20px;
-            background-color: #F1F2CC;
-            color: #1A3240;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="../src/styles/main.css"> <!-- Link to external CSS file -->
 </head>
 
 <body>
-    <!-- Navbar -->
-    <div class="navbar">
-        <img src="./images/samich.jpg" alt="Logo">
-        <div class="navbar-links">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-            <a href="#">Link 4</a>
-        </div>
-    </div>
+    <!-- Include header -->
+    <object type="text/html" data="./header.html"></object>
 
     <!-- Main Content -->
     <div class="main-content">
@@ -103,10 +18,16 @@
         <div class="recipe-preview">
             <h2>Recently Submitted Recipes</h2>
             <!-- Display recent recipes here -->
+            <div>
+              Testing.
+            </div>
                     <!-- Categories Section -->
 
           <h2>Recipe Categories</h2>
           <!-- Display categories here -->
+          <div>
+            Testing.
+          </div>
 
         </div>
 
@@ -118,6 +39,9 @@
             <button type="submit">Login</button>
         </div>
     </div>
+
+    <!-- Include footer -->
+    <object type="text/html" data="./footer.html"></object>
 </body>
 
 </html>
