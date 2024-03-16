@@ -1,5 +1,11 @@
 # JSZ's Recipe Vault
 
+### v0.0.7
+Front end page build out pt. 1
+
+### v0.0.6
+Added controller and started routes.
+
 ### v0.0.5
 Changelog created.
 
