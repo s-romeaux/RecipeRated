@@ -1,3 +1,5 @@
+const express = require('express');
+const user = express.Router()
 const User = require('../models/user');
 
 // Controller functions for handling user-related operations
@@ -39,3 +41,4 @@ exports.createUser = async (req, res) => {
   }
 };
 
+module.exports = user; 
