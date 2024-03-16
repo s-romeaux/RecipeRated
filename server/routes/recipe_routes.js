@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const RecipeController = require('../controllers/recipeController');
+const RecipeController = require('../controllers/recipe_controller');
 
 // Define routes for recipe-related operations
 
