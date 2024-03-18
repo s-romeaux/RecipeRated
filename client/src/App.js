@@ -1,14 +1,14 @@
 import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import RecipeForm from './RecipeForm';
+import Header from './components/Header'; // Adjusted import path
+import Footer from './components/Footer'; // Adjusted import path
+import Home from './components/Home'; // Adjusted import path
 
 function App() {
   return (
     <div className="App">
       <Header />
       <main>
-        <RecipeForm />
+        <Home />
       </main>
       <Footer />
     </div>

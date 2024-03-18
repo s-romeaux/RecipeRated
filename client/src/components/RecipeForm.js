@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles/main.scss'; // Import the main.scss file
 
 function RecipeForm() {
     return (
