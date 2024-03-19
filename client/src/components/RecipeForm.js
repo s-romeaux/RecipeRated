@@ -28,7 +28,47 @@ function RecipeForm() {
 
                     <label htmlFor="categories">Categories:</label>
                     <select id="categories" name="categories">
-                        {/* Options here */}
+                        <optgroup label="Breakfast">
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Brunch">Brunch</option>
+                        </optgroup>
+                        <optgroup label="Lunch">
+                            <option value="Lunch">Lunch</option>
+                            <option value="Beverages">Beverages</option>
+                            <option value="Appetizers">Appetizers</option>
+                            <option value="Soup/Stews">Soup/Stews</option>
+                            <option value="Salads">Salads</option>
+                            <option value="Vegetable">Vegetable</option>
+                            <option value="Dessert">Dessert</option>
+                        </optgroup>
+                        <optgroup label="Main dishes">
+                            <option value="Main dishes">Main dishes</option>
+                            <option value="Beef">Beef</option>
+                            <option value="Poultry">Poultry</option>
+                            <option value="Pork">Pork</option>
+                            <option value="Seafood">Seafood</option>
+                            <option value="Vegetarian">Vegetarian</option>
+                        </optgroup>
+                        <optgroup label="Side Dishes">
+                            <option value="Side Dishes">Side Dishes</option>
+                            <option value="Vegetables">Vegetables</option>
+                            <option value="Grain">Grain</option>
+                            <option value="Other">Other</option>
+                        </optgroup>
+                        <optgroup label="Condiments">
+                            <option value="Condiments">Condiments</option>
+                            <option value="Sauces">Sauces</option>
+                            <option value="Seasoning">Seasoning</option>
+                        </optgroup>
+                        <optgroup label="Desserts">
+                            <option value="Desserts">Desserts</option>
+                            <option value="Cookies">Cookies</option>
+                            <option value="Bars">Bars</option>
+                            <option value="Cakes/Frosting">Cakes/Frosting</option>
+                            <option value="Pies">Pies</option>
+                            <option value="Candy">Candy</option>
+                            <option value="Bread">Bread</option>
+                        </optgroup>
                     </select><br /><br />
 
                     <label htmlFor="serves">Serves:</label>
