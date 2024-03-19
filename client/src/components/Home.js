@@ -10,7 +10,7 @@ function Home() {
                 <h2>Recently Submitted Recipes</h2>
                 {/* Display recent recipes here */}
                 <div>
-                    Testing.1
+                    Testing.12
                 </div>
                 {/* Categories Section */}
                 <h2>Recipe Categories</h2>
