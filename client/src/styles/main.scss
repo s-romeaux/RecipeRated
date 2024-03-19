@@ -1,8 +1,72 @@
+/* Reset Styles */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+
+body>object {
+    width: 100%; // Set width to 100% to match the full width of the page
+    height: 80px; // Set height to 0 to remove vertical space
+}
+
+/* Common Styles */
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Header Styles */
+.navbar {
+    background-color: #1A3240;
+    color: #F1F2CC;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 60px;
+}
+
+.navbar-links a {
+    color: #F1F2CC;
+    text-decoration: none;
+}
+
 /* Main Content Styles */
 .main-content {
     display: flex;
     height: calc(100vh - 80px);
-    margin-top: 0px;
+    margin-top: 80px;
 }
 
 .recipe-preview {
@@ -19,8 +83,8 @@
     padding: 20px;
 }
 
-/* Form Styles */
-.add-recipe-form {
+/* Login Form Styles */
+.login-form {
     flex: 1;
     background-color: #628370;
     color: #1A3240;
@@ -31,17 +95,181 @@
     align-items: center;
 }
 
-.add-recipe-form input {
+.login-form input {
     margin-bottom: 10px;
     padding: 8px;
     width: 100%;
     box-sizing: border-box;
 }
 
-.add-recipe-form button {
+.login-form button {
     padding: 10px 20px;
     background-color: #F1F2CC;
     color: #1A3240;
     border: none;
     cursor: pointer;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #1A3240;
+    color: #F1F2CC;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    /* Set width to 100% */
+    position: fixed;
+    bottom: 0;
+}
+
+.footer a {
+    color: #F1F2CC;
+    text-decoration: none;
+}
+
+/* App Styles */
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+.main-content {
+    .recipe-preview {
+        h2:nth-child(3) {
+            margin-top: 60px; // Add space between header and columns
+            margin-bottom: 20px; // Add space between header and columns
+        }
+
+        .category-columns {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px; // Add space between columns
+
+            .category-column {
+                flex: 1;
+                margin: 10px; // Adjust margin as needed
+
+                ul {
+                    list-style-type: none; // Remove bullets
+                    padding: 0; // Remove default padding
+
+                    li {
+                        margin-bottom: 10px; // Add space between lines
+                    }
+                }
+
+                h3 {
+                    margin-top: 0;
+                    margin-bottom: 10px; // Add space between header and list
+                }
+                &.space-between {
+                    margin-bottom: 60px; // Additional space between sections
+                }
+            }
+
+            // Adjust column widths as needed
+            .column1 {
+                flex: 0 0 30%; // Example width for column 1
+            }
+
+            .column2 {
+                flex: 0 0 30%; // Example width for column 2
+            }
+
+            .column3 {
+                flex: 0 0 30%; // Example width for column 3
+            }
+        }
+    }
+}
+.add-recipe-form {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-recipe-form-content {
+    margin-top: 20px;
+}
+
+.recipe-input {
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.time-input-group {
+    display: flex;
+    align-items: center;
+}
+
+.time-input {
+    margin-right: 10px;
+    padding: 8px;
+    width: 50px;
+    box-sizing: border-box;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    background-color: #1A3240;
+    color: #F1F2CC;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.recipe-form-container {
+    margin-bottom: 80px; /* Add a bottom margin of 80px */
 }
