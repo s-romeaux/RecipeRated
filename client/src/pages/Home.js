@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from './Login'; // Import the Login component
+import Login from '../components/Login'; // Import the Login component
 import '../styles/main.css'; // Import the CSS file
 
 function Home() {
