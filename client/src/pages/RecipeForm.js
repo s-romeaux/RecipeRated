@@ -1,6 +1,7 @@
 import React from 'react';
+import '../styles/recipeform.scss'; // Import the SCSS file
 
-function RecipeForm() {
+function RecipeForm({ username }) { // Accept username as a prop
     return (
         <div className="recipe-form-container"> {/* Changed class name */}
             <h2>Add New Recipe</h2>
@@ -9,7 +10,7 @@ function RecipeForm() {
                 {/* Add recipe form goes here */}
                 <form action="/submit_recipe" method="POST">
                     <label htmlFor="username">Username:</label>
-                    <input type="text" id="username" name="username" required /><br /><br />
+                    <input type="text" id="username" name="username" value={username} readOnly required /><br /><br /> {/* Use readOnly to prevent user input */}
 
                     <label htmlFor="recipeName">Recipe Name:</label>
                     <input type="text" id="recipeName" name="recipeName" required /><br /><br />

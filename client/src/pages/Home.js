@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from '../components/Login'; // Import the Login component
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import '../styles/main.css'; // Import the CSS file
 
 function Home() {
@@ -18,54 +18,62 @@ function Home() {
                 <div className="category-columns">
                     <div className="category-column">
                         <h3>Specialty</h3>
-                        <ul>
-                            <li>Vegan</li>
-                            <li>Gluten-Free</li>
-                            <li>Dairy-Free</li>
-                            <li>Grain-Free</li>
-                            <li>Egg-Free</li>
-                        </ul>
+                        <div className="content">
+                            <ul>
+                                <li>Vegan</li>
+                                <li>Gluten-Free</li>
+                                <li>Dairy-Free</li>
+                                <li>Grain-Free</li>
+                                <li>Egg-Free</li>
+                            </ul>
+                        </div>
                         <h3>Meal Times</h3>
-                        <ul>
-                            <li>Breakfast</li>
-                            <li>Brunch</li>
-                            <li>Lunch</li>
-                        </ul>
+                        <div className="content">
+                            <ul>
+                                <li><Link to="/recipedisplay">Breakfast</Link></li>
+                                <li>Brunch</li>
+                                <li>Lunch</li>
+                            </ul>
+                        </div>
                     </div>
                     <div className="category-column">
-                    <h3>Main dishes</h3>
-                        <ul>
-                            <li>Beef</li>
-                            <li>Poultry</li>
-                            <li>Pork</li>
-                            <li>Seafood</li>
-                            <li>Vegetarian</li>
-                        </ul>
+                        <h3>Main dishes</h3>
+                        <div className="content">
+                            <ul>
+                                <li>Beef</li>
+                                <li>Poultry</li>
+                                <li>Pork</li>
+                                <li>Seafood</li>
+                                <li>Vegetarian</li>
+                            </ul>
+                        </div>
                         <h3>Side Dishes</h3>
-                        <ul>
-                            <li>Vegetables</li>
-                            <li>Grain</li>
-                            <li>Other</li>
-                        </ul>
+                        <div className="content">
+                            <ul>
+                                <li>Vegetables</li>
+                                <li>Grain</li>
+                                <li>Other</li>
+                            </ul>
+                        </div>
                         {/* Add more categories as needed */}
                     </div>
                     <div className="category-column">
                         <h3>Desserts</h3>
-                        <ul>
-                            <li>Cookies</li>
-                            <li>Bars</li>
-                            <li>Cakes/Frosting</li>
-                            <li>Pies</li>
-                            <li>Candy</li>
-                            <li>Bread</li>
-                        </ul>
+                        <div className="content">
+                            <ul>
+                                <li>Cookies</li>
+                                <li>Bars</li>
+                                <li>Cakes/Frosting</li>
+                                <li>Pies</li>
+                                <li>Candy</li>
+                                <li>Bread</li>
+                            </ul>
+                        </div>
                         <h3>Beverages</h3>
                         {/* Add more categories as needed */}
                     </div>
                 </div>
             </div>
-            {/* Render the Login component */}
-            <Login />
         </div>
     );
 }
