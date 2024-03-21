@@ -1,58 +1,70 @@
 const express = require('express');
 const router = express.Router();
-const RecipeController = require('../controllers/recipe_controller');
 const Recipe = require('../models/recipe');
 
-// Define routes for recipe-related operations
-
 // GET all recipes
-router.get('/', RecipeController.getAllRecipes);
+router.get('/recipes', async (req, res) => {
+    try {
+        const recipes = await Recipe.find();
+        res.status(200).json(recipes);
+    } catch (error) {
+        console.error('Error fetching recipes:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 // GET recipe by ID
-router.get('/:id', RecipeController.getRecipeById);
+router.get('/:id', async (req, res) => {
+    try {
+        const recipe = await Recipe.findById(req.params.id);
+        if (!recipe) {
+            return res.status(404).json({ error: 'Recipe not found' });
+        }
+        res.status(200).json(recipe);
+    } catch (error) {
+        console.error('Error fetching recipe by ID:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
-// Handle POST request to submit a new recipe
+// POST add new recipe
 router.post('/submit_recipe', async (req, res) => {
     try {
-        // Create a new recipe instance
-        const newRecipe = new Recipe({
-            username: req.body.username,
-            recipeName: req.body.recipeName,
-            inspiration: req.body.inspiration,
-            specialtyDiets: req.body.specialtyDiets,
-            categories: req.body.categories,
-            serves: req.body.serves,
-            recipeImage: req.body.recipeImage,
-            prepTime: {
-                hours: req.body.prepHours,
-                minutes: req.body.prepMinutes
-            },
-            cookTime: {
-                hours: req.body.cookHours,
-                minutes: req.body.cookMinutes
-            },
-            totalTime: {
-                hours: req.body.totalHours,
-                minutes: req.body.totalMinutes
-            },
-            ingredients: req.body.ingredients,
-            instructions: req.body.instructions
-        });
-
-        // Save the recipe to the database
+        const newRecipe = new Recipe(req.body);
         await newRecipe.save();
-
-        res.status(201).json({ message: 'Recipe added successfully' });
-    } catch (err) {
-        console.error('Error adding recipe:', err);
+        res.status(201).json({ message: 'Recipe added successfully', recipe: newRecipe });
+    } catch (error) {
+        console.error('Error adding recipe:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
 
 // PUT update recipe by ID
-router.put('/:id', RecipeController.updateRecipeById);
+router.put('/:id', async (req, res) => {
+    try {
+        const recipe = await Recipe.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (!recipe) {
+            return res.status(404).json({ error: 'Recipe not found' });
+        }
+        res.status(200).json({ message: 'Recipe updated successfully', recipe });
+    } catch (error) {
+        console.error('Error updating recipe by ID:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 // DELETE recipe by ID
-router.delete('/:id', RecipeController.deleteRecipeById);
+router.delete('/:id', async (req, res) => {
+    try {
+        const recipe = await Recipe.findByIdAndDelete(req.params.id);
+        if (!recipe) {
+            return res.status(404).json({ error: 'Recipe not found' });
+        }
+        res.status(200).json({ message: 'Recipe deleted successfully', recipe });
+    } catch (error) {
+        console.error('Error deleting recipe by ID:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 module.exports = router;

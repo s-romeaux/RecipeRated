@@ -1,24 +1,71 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function RecipeForm() {
+    const [formData, setFormData] = useState({
+        username: '',
+        recipeName: '',
+        inspiration: '',
+        specialtyDiets: '',
+        categories: '',
+        serves: 0,
+        recipeImage: '',
+        prepHours: 0,
+        prepMinutes: 0,
+        cookHours: 0,
+        cookMinutes: 0,
+        totalHours: 0,
+        totalMinutes: 0,
+        ingredients: [{ quantity: '', unit: '', name: '' }],
+        instructions: ''
+    });
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        console.log('Form Data:', formData);
+        try {
+            const response = await fetch('/submit_recipe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            
+            if (response.ok) {
+                alert('Recipe added successfully');
+                // Optionally, clear form fields or perform other actions
+            } else {
+                alert('Failed to add recipe');
+            }
+        } catch (error) {
+            console.error('Error occurred while sending request:', error);
+            alert('Error occurred while sending request');
+        }
+    };
+
     return (
         <div className="recipe-form-container"> {/* Changed class name */}
             <h2>Add New Recipe</h2>
             {/* Content */}
             <div className="add-recipe-form">
                 {/* Add recipe form goes here */}
-                <form action="/submit_recipe" method="POST">
+                <form onSubmit={handleSubmit}>
                     <label htmlFor="username">Username:</label>
-                    <input type="text" id="username" name="username" required /><br /><br />
+                    <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} required /><br /><br />
 
                     <label htmlFor="recipeName">Recipe Name:</label>
-                    <input type="text" id="recipeName" name="recipeName" required /><br /><br />
+                    <input type="text" id="recipeName" name="recipeName" value={formData.recipeName} onChange={handleChange} required /><br /><br />
 
                     <label htmlFor="inspiration">Inspiration:</label>
-                    <input type="text" id="inspiration" name="inspiration" /><br /><br />
+                    <input type="text" id="inspiration" name="inspiration" value={formData.inspiration} onChange={handleChange} /><br /><br />
 
                     <label htmlFor="specialtyDiets">Specialty Diets:</label>
-                    <select id="specialtyDiets" name="specialtyDiets">
+                    <select id="specialtyDiets" name="specialtyDiets" value={formData.specialtyDiets} onChange={handleChange}>
                         <option value="Vegan">Vegan</option>
                         <option value="Gluten-Free">Gluten-Free</option>
                         <option value="Dairy-Free">Dairy-Free</option>
