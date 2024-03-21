@@ -1,9 +1,9 @@
-<<<<<<< HEAD:client/src/components/RecipeForm.js
-import React, { useState } from 'react';
+import React, { useState }   from 'react';
+import '../styles/recipeform.scss'; // Import the SCSS file
 
-function RecipeForm() {
+function RecipeForm({ username }) { // Accept username as a prop
     const [formData, setFormData] = useState({
-        username: '',
+        username: username, // Assuming username is passed as a prop
         recipeName: '',
         inspiration: '',
         specialtyDiets: '',
@@ -22,39 +22,58 @@ function RecipeForm() {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setFormData({ ...formData, [name]: value });
+        setFormData({
+            ...formData,
+            [name]: value
+        });
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('Form Data:', formData);
         try {
-            const response = await fetch('/submit_recipe', {
+            console.log('Form Data:', formData);
+            const response = await fetch('http://localhost:5000/recipes/submit_recipe', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify({
+                    username: formData.username,
+                    recipeName: formData.recipeName,
+                    inspiration: formData.inspiration,
+                    specialtyDiets: formData.specialtyDiets,
+                    categories: formData.categories,
+                    serves: formData.serves,
+                    recipeImage: formData.recipeImage,
+                    prepTime: {
+                        hours: formData.prepHours,
+                        minutes: formData.prepMinutes
+                    },
+                    cookTime: {
+                        hours: formData.cookHours,
+                        minutes: formData.cookMinutes
+                    },
+                    totalTime: {
+                        hours: formData.totalHours,
+                        minutes: formData.totalMinutes
+                    },
+                    ingredients: formData.ingredients,
+                    instructions: formData.instructions
+                })
             });
-            
             if (response.ok) {
                 alert('Recipe added successfully');
                 // Optionally, clear form fields or perform other actions
             } else {
-                alert('Failed to add recipe');
+                const errorMessage = await response.text();
+                throw new Error(errorMessage);
             }
         } catch (error) {
             console.error('Error occurred while sending request:', error);
-            alert('Error occurred while sending request');
+            alert('Failed to add recipe: ' + error.message);
         }
     };
-
-=======
-import React from 'react';
-import '../styles/recipeform.scss'; // Import the SCSS file
-
-function RecipeForm({ username }) { // Accept username as a prop
->>>>>>> main:client/src/pages/RecipeForm.js
+    
     return (
         <div className="recipe-form-container"> {/* Changed class name */}
             <h2>Add New Recipe</h2>
@@ -63,11 +82,7 @@ function RecipeForm({ username }) { // Accept username as a prop
                 {/* Add recipe form goes here */}
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="username">Username:</label>
-<<<<<<< HEAD:client/src/components/RecipeForm.js
-                    <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} required /><br /><br />
-=======
-                    <input type="text" id="username" name="username" value={username} readOnly required /><br /><br /> {/* Use readOnly to prevent user input */}
->>>>>>> main:client/src/pages/RecipeForm.js
+                    <input type="text" id="username" name="username" value={formData.username} readOnly required /><br /><br /> {/* Use readOnly to prevent user input */}
 
                     <label htmlFor="recipeName">Recipe Name:</label>
                     <input type="text" id="recipeName" name="recipeName" value={formData.recipeName} onChange={handleChange} required /><br /><br />
@@ -75,7 +90,7 @@ function RecipeForm({ username }) { // Accept username as a prop
                     <label htmlFor="inspiration">Inspiration:</label>
                     <input type="text" id="inspiration" name="inspiration" value={formData.inspiration} onChange={handleChange} /><br /><br />
 
-                    <label htmlFor="specialtyDiets">Specialty Diets:</label>
+                    <label htmlFor="specialtyDiets" >Specialty Diets:</label>
                     <select id="specialtyDiets" name="specialtyDiets" value={formData.specialtyDiets} onChange={handleChange}>
                         <option value="Vegan">Vegan</option>
                         <option value="Gluten-Free">Gluten-Free</option>
@@ -85,7 +100,7 @@ function RecipeForm({ username }) { // Accept username as a prop
                     </select><br /><br />
 
                     <label htmlFor="categories">Categories:</label>
-                    <select id="categories" name="categories">
+                    <select id="categories" name="categories" value={formData.categories} onChange={handleChange}>
                         <optgroup label="Breakfast">
                             <option value="Breakfast">Breakfast</option>
                             <option value="Brunch">Brunch</option>
@@ -130,7 +145,7 @@ function RecipeForm({ username }) { // Accept username as a prop
                     </select><br /><br />
 
                     <label htmlFor="serves">Serves:</label>
-                    <input type="number" id="serves" name="serves" min="1" required /> people<br /><br />
+                    <input type="number" id="serves" name="serves" min="1" value={formData.serves} onChange={handleChange} required /> people<br /><br />
                     
                     {/* Recipe Image */}
                     <label htmlFor="recipeImage">Recipe Image:</label>
