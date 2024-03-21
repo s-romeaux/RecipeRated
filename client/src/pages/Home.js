@@ -17,39 +17,21 @@ function Home() {
                 {/* Display categories here */}
                 <div className="category-columns">
                     <div className="category-column">
-                        <h3>Specialty</h3>
-                        <div className="content">
-                            <ul>
-                                <li>Vegan</li>
-                                <li>Gluten-Free</li>
-                                <li>Dairy-Free</li>
-                                <li>Grain-Free</li>
-                                <li>Egg-Free</li>
-                            </ul>
-                        </div>
                         <h3>Meal Times</h3>
                         <div className="content">
                             <ul>
                                 <li><Link to="/recipedisplay">Breakfast</Link></li>
                                 <li>Brunch</li>
                                 <li>Lunch</li>
+                                <li>Dinter</li>
                             </ul>
                         </div>
                     </div>
                     <div className="category-column">
-                        <h3>Main dishes</h3>
-                        <div className="content">
-                            <ul>
-                                <li>Beef</li>
-                                <li>Poultry</li>
-                                <li>Pork</li>
-                                <li>Seafood</li>
-                                <li>Vegetarian</li>
-                            </ul>
-                        </div>
                         <h3>Side Dishes</h3>
                         <div className="content">
                             <ul>
+                                <li>Salads</li>
                                 <li>Vegetables</li>
                                 <li>Grain</li>
                                 <li>Other</li>
@@ -62,15 +44,16 @@ function Home() {
                         <div className="content">
                             <ul>
                                 <li>Cookies</li>
-                                <li>Bars</li>
-                                <li>Cakes/Frosting</li>
+                                <li>Cakes</li>
                                 <li>Pies</li>
-                                <li>Candy</li>
-                                <li>Bread</li>
+
                             </ul>
                         </div>
                         <h3>Beverages</h3>
-                        {/* Add more categories as needed */}
+                        <ul>
+                        <li>For Minors 🧃</li>
+                        <li>For Miners 🍹⛏️</li>
+                        </ul>
                     </div>
                 </div>
             </div>
