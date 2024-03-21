@@ -1,3 +1,4 @@
+<<<<<<< HEAD:client/src/components/RecipeForm.js
 import React, { useState } from 'react';
 
 function RecipeForm() {
@@ -48,6 +49,12 @@ function RecipeForm() {
         }
     };
 
+=======
+import React from 'react';
+import '../styles/recipeform.scss'; // Import the SCSS file
+
+function RecipeForm({ username }) { // Accept username as a prop
+>>>>>>> main:client/src/pages/RecipeForm.js
     return (
         <div className="recipe-form-container"> {/* Changed class name */}
             <h2>Add New Recipe</h2>
@@ -56,7 +63,11 @@ function RecipeForm() {
                 {/* Add recipe form goes here */}
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="username">Username:</label>
+<<<<<<< HEAD:client/src/components/RecipeForm.js
                     <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} required /><br /><br />
+=======
+                    <input type="text" id="username" name="username" value={username} readOnly required /><br /><br /> {/* Use readOnly to prevent user input */}
+>>>>>>> main:client/src/pages/RecipeForm.js
 
                     <label htmlFor="recipeName">Recipe Name:</label>
                     <input type="text" id="recipeName" name="recipeName" value={formData.recipeName} onChange={handleChange} required /><br /><br />

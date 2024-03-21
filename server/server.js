@@ -7,6 +7,7 @@ const userRoutes = require('./routes/user_routes');
 // require model schema
 const Recipe = require('./models/recipe')
 
+<<<<<<< HEAD
 
 app.use('/users', userRoutes); // Mount user routes at /users
 app.use('/recipes', recipeRoutes); // Mount recipe routes at /recipes
@@ -14,18 +15,27 @@ app.use('/recipes', recipeRoutes); // Mount recipe routes at /recipes
 
  
 
+=======
+>>>>>>> main
 // Load environment variables from .env file
 require('dotenv').config();
 
-console.log(process.env.MONGO_URI); 
+console.log(process.env.MONGO_URI);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
+<<<<<<< HEAD
     useUnifiedTopology: true,
   })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
+=======
+    useUnifiedTopology: true
+})
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.error('MongoDB connection error:', err));
+>>>>>>> main
 
 
   // Get the default connection
