@@ -1,23 +1,21 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const cors = require('cors');
 const recipeRoutes = require('./routes/recipe_routes');
 const userRoutes = require('./routes/user_routes');
 
-// require model schema
-const Recipe = require('./models/recipe')
+// Middleware for parsing JSON bodies
+app.use(express.json());
 
-<<<<<<< HEAD
+// Use CORS middleware
+app.use(cors());
 
-app.use('/users', userRoutes); // Mount user routes at /users
-app.use('/recipes', recipeRoutes); // Mount recipe routes at /recipes
+app.get('/', (req, res) => {
+    res.send('Welcome to the backend server');
+});
 
 
- 
-
-=======
->>>>>>> main
-// Load environment variables from .env file
 require('dotenv').config();
 
 console.log(process.env.MONGO_URI);
@@ -25,25 +23,22 @@ console.log(process.env.MONGO_URI);
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
-<<<<<<< HEAD
     useUnifiedTopology: true,
   })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
-=======
-    useUnifiedTopology: true
-})
-    .then(() => console.log('MongoDB connected'))
-    .catch(err => console.error('MongoDB connection error:', err));
->>>>>>> main
 
 
-  // Get the default connection
-const db = mongoose.connection;
+// require model schema
+const Recipe = require('./models/recipe')
 
 
-// Bind connection to error event (to get notification of connection errors)
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+app.use('/users', userRoutes); // Mount user routes at /users
+app.use('/recipes', recipeRoutes); // Mount recipe routes at /recipes
+
+
+
+
 
   // Define sample recipe data
 const sampleRecipeData = {
@@ -80,7 +75,10 @@ async function insertSampleData() {
 insertSampleData();
 
 
-
+   
+   
+  
+   
 // Error handling middleware for undefined routes
 app.use((req, res, next) => {
     const error = new Error('Not Found');
@@ -98,8 +96,6 @@ app.use((err, req, res, next) => {
     });
 });
 
-// Use /recipes as the main endpoint
-app.use('/recipes', recipeRoutes);
 
 
 

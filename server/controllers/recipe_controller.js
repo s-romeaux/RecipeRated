@@ -1,6 +1,7 @@
 const express = require('express');
 const Recipe = require('../models/recipe');
 
+
 // Controller function to get all recipes
 exports.getAllRecipes = async (req, res) => {
   try {
@@ -26,15 +27,28 @@ exports.getRecipeById = async (req, res) => {
   }
 };
 
+
 // Controller function to add a new recipe
 exports.addRecipe = async (req, res) => {
   try {
-      const newRecipe = new Recipe(req.body);
-      await newRecipe.save();
-      res.status(201).json({ message: 'Recipe added successfully', recipe: newRecipe });
+    // Log the received form data
+    console.log('Received form data:', req.body);
+
+    // Create a new recipe object using the request body
+    const newRecipe = new Recipe(req.body);
+
+    // Save the new recipe to the database
+    await newRecipe.save();
+
+    // Log success message and send response
+    console.log('Recipe added successfully:', newRecipe);
+    res.status(201).json({ message: 'Recipe added successfully', recipe: newRecipe });
   } catch (error) {
-      console.error('Error adding recipe:', error);
-      res.status(500).json({ error: 'Internal server error' });
+    // Log any errors that occur during the process
+    console.error('Error adding recipe:', error);
+
+    // Send an error response
+    res.status(500).json({ error: 'Internal server error' });
   }
 };
 
