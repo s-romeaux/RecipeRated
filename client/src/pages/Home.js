@@ -57,7 +57,7 @@ function Home() {
                 <h1>Recipe Categories</h1>
                 {/* Display categories here */}
                 <div className="category-columns">
-                    <div className="category-column">
+                    <div className="category-column">                      
                         <h3>Meal Times</h3>
                         <div className="content">
                             <ul>

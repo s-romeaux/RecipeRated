@@ -3,7 +3,7 @@ import '../styles/recipeform.scss'; // Import the SCSS file
 
 function RecipeForm({ username }) { // Accept username as a prop
     const [formData, setFormData] = useState({
-        username: username, // Assuming username is passed as a prop
+        username: '', // Assuming username is passed as a prop
         recipeName: '',
         inspiration: '',
         specialtyDiets: '',
@@ -99,7 +99,7 @@ function RecipeForm({ username }) { // Accept username as a prop
                 {/* Add recipe form goes here */}
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="username">Username:</label>
-                    <input type="text" id="username" name="username" value={formData.username} readOnly required /><br /><br /> {/* Use readOnly to prevent user input */}
+                    <input type="text" id="username" name="username" value={formData.username}  onChange={handleChange}  required /><br /><br /> {/* Use readOnly to prevent user input */}
 
                     <label htmlFor="recipeName">Recipe Name:</label>
                     <input type="text" id="recipeName" name="recipeName" value={formData.recipeName} onChange={handleChange} required /><br /><br />
