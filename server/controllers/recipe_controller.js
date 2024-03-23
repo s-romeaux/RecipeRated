@@ -1,15 +1,19 @@
 const express = require('express');
 const Recipe = require('../models/recipe');
+const router = express.Router();
 
 
-// Controller function to get all recipes
-exports.getAllRecipes = async (req, res) => {
+// Controller function to render the home page
+exports.renderHomePage = async (req, res) => {
   try {
-      const recipes = await Recipe.find();
-      res.status(200).json(recipes);
+      // You can fetch any data needed for your home page here
+      // For example, you can fetch recent recipes, featured recipes, etc.
+      
+      // Render the home page view with any data you want to pass
+      res.render('home', { title: 'Home Page', message: 'Welcome to our recipe app!' });
   } catch (error) {
-      console.error('Error fetching recipes:', error);
-      res.status(500).json({ error: 'Internal server error' });
+      console.error('Error rendering home page:', error);
+      res.status(500).send('Internal server error');
   }
 };
 
@@ -41,8 +45,8 @@ exports.addRecipe = async (req, res) => {
     await newRecipe.save();
 
     // Log success message and send response
-    console.log('Recipe added successfully:', newRecipe);
-    res.status(201).json({ message: 'Recipe added successfully', recipe: newRecipe });
+    console.log('Recipe added successfullyyy:', newRecipe);
+    res.redirect('/'); // Assuming the homepage route is '/'
   } catch (error) {
     // Log any errors that occur during the process
     console.error('Error adding recipe:', error);

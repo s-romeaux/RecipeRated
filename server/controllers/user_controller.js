@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = require('../../client/src/models/user');
 
 // Controller functions for handling user-related operations
 

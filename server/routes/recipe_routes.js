@@ -4,7 +4,7 @@ const Recipe = require('../models/recipe');
 const recipeController = require('../controllers/recipe_controller');
 
 // Route to get all recipes
-router.get('/', recipeController.getAllRecipes);
+router.get('/', recipeController.renderHomePage);
 
 // Route to get a recipe by ID
 router.get('/:id', recipeController.getRecipeById);

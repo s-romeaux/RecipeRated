@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import User from '../models/user'
 
 const SignUpForm = styled.form`
     width: 100%; /* Set width to 100% */
@@ -58,8 +59,24 @@ const SignUpPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle form submission, e.g., send data to backend
-        console.log(formData);
+
+        const newUser = new User({
+            name: formData.name,
+            dob: formData.dob,
+            city: formData.city,
+            username: formData.username,
+            password: formData.password
+        });
+
+        newUser.save()
+            .then(savedUser => {
+                console.log('User saved successfully:', savedUser);
+                // Handle successful user creation, e.g., redirect to login page
+            })
+            .catch(error => {
+                console.error('Error saving user:', error);
+                // Handle error, e.g., display error message to user
+            });
     };
 
     return (
