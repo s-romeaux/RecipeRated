@@ -6,7 +6,7 @@ function Footer() {
         <footer>
             {/* Footer */}
             <div className="footer">
-                <p>&copy; 2024 Recipe Sharing Platform. All rights reserved.</p>
+                <p>&copy; 2024 ZSJ RecipeXchange. All rights reserved.</p>
                 <p><a href="mailto:contact@example.com">Contact Us</a></p>
             </div>
         </footer>

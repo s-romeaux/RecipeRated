@@ -25,7 +25,7 @@ code {
   font-size: 120%; /* Increase font size by 20% */
 }
 
-h2 {
+h1, h2 {
   font-weight: bold; /* Make headers bold */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow */
 }
@@ -66,10 +66,6 @@ button {
   /* Adjust padding as needed */
 }
 
-.news-container .category-columns .category-column {
-  background-color: white;
-  color: #1A3240; /* Text color matching the header background */
-}
 
 .news-columns {
   flex: 1;
@@ -81,8 +77,8 @@ button {
 .news-column {
   flex: 1;
   /* Updated */
-  background-color: #628370;
-  color: #F1F2CC;
+  background-color: white;
+  color: #1A3240;
   margin: 20px;
 }
 
@@ -153,4 +149,8 @@ button {
 .footer a {
   color: #F1F2CC;
   text-decoration: none;
+}
+
+body {
+  background-color: #2A4250;
 }/*# sourceMappingURL=main.css.map */
