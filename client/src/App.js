@@ -5,7 +5,6 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import RecipeForm from './pages/RecipeForm';
 import Signup from './pages/Signup.js';
-import RecipeDisplay from './pages/RecipeDisplay.js';
 import RecipeDetails from "./pages/RecipeDetails.js";
 
 function App() {
