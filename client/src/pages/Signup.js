@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+
 const SignUpForm = styled.form`
     width: 100%; /* Set width to 100% */
     max-width: 600px; /* Add max-width to prevent the form from becoming too wide */
@@ -41,25 +42,43 @@ const Button = styled.button`
 
 const SignUpPage = () => {
     const [formData, setFormData] = useState({
-        name: '',
-        dob: '',
-        city: '',
-        username: '',
-        password: ''
+      name: '',
+      dob: '',
+      city: '',
+      username: '',
+      password: ''
     });
-
+  
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
+      const { name, value } = e.target;
+      setFormData({
+        ...formData,
+        [name]: value
+      });
     };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission, e.g., send data to backend
-        console.log(formData);
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+  
+      try {
+        const response = await fetch('http://localhost:5000/users/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+  
+        if (response.ok) {
+            alert('New user created');
+        } else {
+            const errorMessage = await response.text();
+            throw new Error(errorMessage);
+        }
+      } catch (error) {
+        console.error('Error signing up:', error);
+        // Handle error, e.g., display error message to user
+      }
     };
 
     return (
