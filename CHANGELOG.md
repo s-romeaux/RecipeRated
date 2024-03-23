@@ -1,5 +1,8 @@
 # JSZ's Recipe Vault
 
+### v0.1.3
+README designed
+
 ### v0.1.2
 Fixed bug with schema
 
