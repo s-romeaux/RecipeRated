@@ -8,7 +8,7 @@ const RecipeDisplay = () => {
 
     const {
         recipeName,
-        userName,
+        username,
         inspiration,
         categories,
         serves,
@@ -19,14 +19,14 @@ const RecipeDisplay = () => {
         cookMinutes,
         totalHours,
         totalMinutes,
-        ingredients,
+        formattedIngredients,
         instructions,
     } = recipe;
 
     return (
         <div className="recipe-container">
             <img src={recipeImage} alt={recipeName} className="recipe-image" />
-            <p style={{ textAlign: 'right' }}>Nomilicious Contribution By: {userName}</p>
+            <p style={{ textAlign: 'right' }}>Nomilicious Contribution By: {username}</p>
             <h2 className="recipe-title">{recipeName}</h2>
             <div className="recipe-details">
                 <span className="recipe-category">Categories:</span>
@@ -36,10 +36,10 @@ const RecipeDisplay = () => {
             </div>
             <h3>Ingredients:</h3>
             <ul className="ingredients-list">
-                {ingredients.map((ingredient, index) => (
-                    <li key={index} className="ingredient-item">{ingredient}</li>
-                ))}
-            </ul>
+    {formattedIngredients.map((ingredient, index) => (
+        <li key={index} className="ingredient-item">{ingredient}</li>
+    ))}
+</ul>
             <h3>Instructions:</h3>
             <div className="recipe-instructions">{instructions.map((step, index) => <p key={index}>{step}</p>)}</div>
             <h3>Preparation Time:</h3>
