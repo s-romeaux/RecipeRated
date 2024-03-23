@@ -83,3 +83,15 @@ exports.deleteRecipeById = async (req, res) => {
       res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+// Controller function to get recipes by category
+exports.getRecipesByCategory = async (req, res) => {
+  try {
+    const category = req.params.category;
+    const recipes = await Recipe.find({ categories: category });
+    res.status(200).json(recipes);
+  } catch (error) {
+    console.error('Error fetching recipes by category:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};

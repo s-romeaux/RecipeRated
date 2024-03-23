@@ -18,5 +18,9 @@ router.put('/:id', recipeController.updateRecipeById);
 // Route to delete a recipe by ID
 router.delete('/:id', recipeController.deleteRecipeById);
 
+
+// Route to get recipes by category
+router.get('/category/:category', recipeController.getRecipesByCategory);
+
 module.exports = router;
 
