@@ -2,17 +2,6 @@ const User = require('../models/user');
 
 // Controller functions for handling user-related operations
 
-// Get all users
-exports.getAllUsers = async (req, res) => {
-  try {
-    const users = await User.find();
-    res.json(users);
-  } catch (error) {
-    console.error('Error getting users:', error);
-    res.status(500).json({ message: 'Internal Server Error' });
-  }
-};
-
 // Get user by ID
 exports.getUserById = async (req, res) => {
   try {

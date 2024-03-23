@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import User from '../models/user'
+
 
 const SignUpForm = styled.form`
     width: 100%; /* Set width to 100% */
@@ -42,41 +42,43 @@ const Button = styled.button`
 
 const SignUpPage = () => {
     const [formData, setFormData] = useState({
-        name: '',
-        dob: '',
-        city: '',
-        username: '',
-        password: ''
+      name: '',
+      dob: '',
+      city: '',
+      username: '',
+      password: ''
     });
-
+  
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
+      const { name, value } = e.target;
+      setFormData({
+        ...formData,
+        [name]: value
+      });
     };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        const newUser = new User({
-            name: formData.name,
-            dob: formData.dob,
-            city: formData.city,
-            username: formData.username,
-            password: formData.password
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+  
+      try {
+        const response = await fetch('http://localhost:5000/users/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
         });
-
-        newUser.save()
-            .then(savedUser => {
-                console.log('User saved successfully:', savedUser);
-                // Handle successful user creation, e.g., redirect to login page
-            })
-            .catch(error => {
-                console.error('Error saving user:', error);
-                // Handle error, e.g., display error message to user
-            });
+  
+        if (response.ok) {
+            alert('New user created');
+        } else {
+            const errorMessage = await response.text();
+            throw new Error(errorMessage);
+        }
+      } catch (error) {
+        console.error('Error signing up:', error);
+        // Handle error, e.g., display error message to user
+      }
     };
 
     return (
