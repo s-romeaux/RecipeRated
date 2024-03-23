@@ -2,7 +2,7 @@
   "recipes": [
     {
       "id": 1,
-      "userName": "BigJohnson",
+      "username": "BigJohnson",
       "recipeName": "Old Aunt Sally's Scrambled Eggs",
       "inspiration": "Old Aunt Sally's Eggs",
       "specialtyDiets": [],
@@ -23,12 +23,21 @@
         "Fresh black pepper",
         "Chopped fresh chives (optional, for garnish)"
       ],
+      "formattedIngredients": [
+        "3 ripe bananas",
+        "1/3 cup melted butter",
+        "1 cup sugar",
+        "1 egg, beaten",
+        "1 tsp vanilla extract",
+        "1 tsp baking soda",
+        "pinch of salt",
+        "1 1/2 cups all-purpose flour"
+      ],
       "instructions": [
-        "Crack the eggs into a medium bowl and add the milk or water. Whisk until smooth and combined, with no streaks of egg white remaining.",
-        "Brush a small nonstick skillet with olive oil, or melt a little butter in a small nonstick skillet. Bring to medium heat.",
-        "Pour in the eggs, and let them cook for a few seconds without stirring. Pull a rubber spatula across the bottom of the pan to form large, soft curds of scrambled eggs.",
-        "Continue cooking over medium-low heat, folding and stirring the eggs every few seconds. Scrape the spatula along the bottom and sides of the pan often to form more curds and to prevent any part of the eggs from drying out.",
-        "Remove the pan from the heat when the eggs are mostly set, but a little liquid egg remains. Season to taste with salt and pepper and garnish with chopped fresh chives, if desired."
+        "Preheat oven to 350°F (175°C).",
+        "Mash bananas in a mixing bowl.",
+        "Stir in melted butter...",
+        "Enjoy your delicious banana bread!"
       ]
     }
   ]

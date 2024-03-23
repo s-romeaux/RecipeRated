@@ -4,11 +4,11 @@
 .recipe-form-container h2 {
     text-align: center;
     color: #F1F2CC;
-    background-color: #2A4250;
+    background-color: hsl(202, 31%, 24%);
 }
 
 /* Style for the add recipe form */
-.add-recipe-form {
+.recipe-form-container {
     padding: 20px;
     padding-bottom: 250px;
     background-color: #2A4250;
@@ -42,4 +42,8 @@
     margin-right: 10px;
     padding: 8px;
     width: 50px;
+}
+
+.add-recipe-form-content {
+    display: none; // Hide the formatted ingredients field
 }

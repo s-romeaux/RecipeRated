@@ -92,7 +92,7 @@ const handleSubmit = async (event) => {
 };
     
     return (
-        <div className="recipe-form-container"> {/* Changed class name */}
+        <div className="recipe-form-container">
             <h2>Add New Recipe</h2>
             {/* Content */}
             <div className="add-recipe-form">
@@ -209,6 +209,8 @@ const handleSubmit = async (event) => {
                                 <option value="gallon">gallon</option>
                                 <option value="pinch">pinch</option>
                                 <option value="piece">piece</option>
+                                <option value="large">large</option>
+                                <option value="small">small</option>
                             </select>
                             <input type="text" className="ingredient-name"  name={`ingredient-name[${index}]`} placeholder="Ingredient" value={ingredient.name} onChange={(event) => handleIngredientChange(event, index, 'name')} />
                             <button type="button" className="btn-add-ingredient" onClick={handleAddIngredient}>+</button>
@@ -219,11 +221,49 @@ const handleSubmit = async (event) => {
                     <label htmlFor="instructions">Instructions:</label><br />
                     <textarea id="instructions" name="instructions" rows="8" cols="50" value={formData.instructions} onChange={handleChange} required></textarea><br /><br />
 
-                    <input type="submit" value="Submit" />
-                    </form>
-            </div>
+                <input type="submit" value="Submit" />
+            </form>
+
+            {/* Login Popup */}
+            {showLoginPopup && (
+                <div className="login-popup">
+                    <div className="overlay"></div>
+                    <div className="popup-content">
+                        <p>Please sign in first.</p>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
 
 export default RecipeForm;
+
+
+// Example for Johnson
+// {
+//     "username": "exampleUser",
+//     "recipeName": "Banana Bread",
+//     "inspiration": "My grandmother's recipe",
+//     "specialtyDiets": "Vegetarian",
+//     "categories": "Desserts",
+//     "serves": 8,
+//     "prepHours": 0,
+//     "prepMinutes": 15,
+//     "cookHours": 1,
+//     "cookMinutes": 0,
+//     "totalHours": 1,
+//     "totalMinutes": 15,
+//     "ingredients": [
+//       { "quantity": "3", "unit": "", "name": "ripe bananas" },
+//       { "quantity": "1/3", "unit": "cup", "name": "melted butter" },
+//       { "quantity": "1", "unit": "cup", "name": "sugar" },
+//       { "quantity": "1", "unit": "", "name": "egg, beaten" },
+//       { "quantity": "1", "unit": "tsp", "name": "vanilla extract" },
+//       { "quantity": "1", "unit": "tsp", "name": "baking soda" },
+//       { "quantity": "pinch", "unit": "", "name": "salt" },
+//       { "quantity": "1 1/2", "unit": "cup", "name": "all-purpose flour" }
+//     ],
+//     "formattedIngredients": "3 ripe bananas\n1/3 cup melted butter\n1 cup sugar\n1 egg, beaten\n1 tsp vanilla extract\n1 tsp baking soda\npinch of salt\n1 1/2 cups all-purpose flour",
+//     "instructions": "1. Preheat oven to 350°F (175°C).\n2. Mash bananas in a mixing bowl.\n3. Stir in melted butter...\n8. Enjoy your delicious banana bread!"
+//   }
