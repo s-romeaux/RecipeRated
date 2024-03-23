@@ -11,7 +11,7 @@ router.get('/', UserController.getAllUsers);
 router.get('/:id', UserController.getUserById);
 
 // POST create a new user
-router.post('/', UserController.createUser);
+router.post('/signup', UserController.createUser);
 
 
 module.exports = router;

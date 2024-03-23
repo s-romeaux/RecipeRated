@@ -1,4 +1,4 @@
-const User = require('../../client/src/models/user');
+const User = require('../models/user');
 
 // Controller functions for handling user-related operations
 
@@ -33,6 +33,7 @@ exports.createUser = async (req, res) => {
     const newUser = new User(req.body);
     await newUser.save();
     res.status(201).json(newUser);
+    console.log("new login created")
   } catch (error) {
     console.error('Error creating user:', error);
     res.status(500).json({ message: 'Internal Server Error' });
