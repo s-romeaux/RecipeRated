@@ -21,7 +21,7 @@ function Home() {
 
     return (
         <div className="main-content">
-            {/* Recipe Preview Section */}
+            {/* Recipe Preview Sectionnnn */}
             <div className="recipe-preview">
                 <h2>Recently Submitted Recipes</h2>
                 {/* Display recent recipes here */}
