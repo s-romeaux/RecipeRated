@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import RecipeForm from './pages/RecipeForm';
 import Signup from './pages/Signup.js';
 import RecipeDisplay from './pages/RecipeDisplay.js';
+import RecipeDetails from "./pages/RecipeDetails.js";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/add-recipe" element={<RecipeForm />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/recipedisplay" element={<RecipeDisplay />} />
+        
+        <Route path="/recipes/:id" element={<RecipeDetails />} />
       </Routes>
       <Footer />
     </React.Fragment>
