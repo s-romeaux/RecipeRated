@@ -4,7 +4,6 @@ const UserController = require('../controllers/user_controller');
 
 // Define routes for user-related operations
 
-
 // GET user by ID
 router.get('/:id', UserController.getUserById);
 
