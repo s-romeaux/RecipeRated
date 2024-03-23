@@ -32,17 +32,7 @@ function Home() {
                 <h2>Recipe Categories</h2>
                 {/* Display categories here */}
                 <div className="category-columns">
-                    <div className="category-column">
-                        <h3>Specialty</h3>
-                        <div className="content">
-                            <ul>
-                                <li><Link onClick={() => fetchRecipesByCategory('Vegan')}>Vegan</Link></li>
-                                <li><Link onClick={() => fetchRecipesByCategory('Gluten-Free')}>Gluten-Free</Link></li>
-                                <li><Link onClick={() => fetchRecipesByCategory('Dairy-Free')}>Dairy-Free</Link></li>
-                                <li><Link onClick={() => fetchRecipesByCategory('Grain-Free')}>Grain-Free</Link></li>
-                                <li><Link onClick={() => fetchRecipesByCategory('Egg-Free')}>Egg-Free</Link></li>
-                            </ul>
-                        </div>
+                    <div className="category-column">                      
                         <h3>Meal Times</h3>
                         <div className="content">
                             <ul>

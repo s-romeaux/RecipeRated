@@ -70,7 +70,7 @@ const SignUpPage = () => {
         });
   
         if (response.ok) {
-            alert('New user created');
+            alert('New user created,');
         } else {
             const errorMessage = await response.text();
             throw new Error(errorMessage);

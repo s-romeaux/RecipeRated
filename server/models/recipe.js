@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 // Define the recipe schema
 const recipeSchema = new Schema({
-    username: String,
+    username: { type: Schema.Types.ObjectId, ref: 'User' }, // Change type to ObjectId and reference User model
     recipeName: String,
     inspiration: String,
     specialtyDiets: String,
@@ -29,7 +29,8 @@ const recipeSchema = new Schema({
             name: String
         }
     ],
-    instructions: String
+    instructions: String,
+       
 });
 
 // Create a model for the recipe schema
