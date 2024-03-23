@@ -8,22 +8,35 @@ const Nav = styled.nav`
     height: 80px;
     display: flex;
     justify-content: space-between;
-    align-content: center;
     align-items: center;
     padding: 0.2rem calc((100vw - 1000px) / 2);
     z-index: 12;
 `;
 
-const NavLink = styled(Link)`
-    color: #808080;
+const LogoContainer = styled.div`
     display: flex;
     align-items: center;
+`;
+
+const Logo = styled.img`
+    margin-right: 10px; /* Adjust margin as needed */
+`;
+
+const MenuContainer = styled.div`
+    display: flex;
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+`;
+
+const NavLink = styled(Link)`
+    color: #F1F2CC;
     text-decoration: none;
     padding: 0 1rem;
-    height: 100%;
     cursor: pointer;
+
     &.active {
-        color: #4d4dff;
+        color: #F1F2CC; /* Set active link color to match default link color */
     }
 `;
 
@@ -32,28 +45,29 @@ const Bars = styled(FaBars)`
     color: #808080;
     @media screen and (max-width: 768px) {
         display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        transform: translate(-100%, 75%);
         font-size: 1.8rem;
         cursor: pointer;
     }
 `;
 
-const NavMenu = styled.div`
-    display: flex;
-    align-items: center;
-    margin-right: -24px;
-    @media screen and (max-width: 768px) {
+const MobileMenuContainer = styled.div`
+    position: absolute;
+    top: 80px;
+    right: 10px; /* Adjust position */
+    background: #1A3240;
+    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 5px;
+    @media screen and (min-width: 768px) {
         display: none;
     }
 `;
 
 const LoginPopup = styled.div`
     position: absolute;
-    top: 0; /* Position it at the top */
-    right: 0; /* Position it at the right */
+    top: 80px;
+    right: 0;
     background: #fff;
     border: 1px solid #ccc;
     padding: 20px;
@@ -78,7 +92,12 @@ const Button = styled.button`
 `;
 
 function Navbar() {
+    const [isMenuOpen, setMenuOpen] = useState(false);
     const [isLoginOpen, setLoginOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!isMenuOpen);
+    };
 
     const toggleLogin = () => {
         setLoginOpen(!isLoginOpen);
@@ -86,13 +105,21 @@ function Navbar() {
 
     return (
         <Nav>
-            <img src='/images/samich.jpg' alt="Logo" className="logo" />
-            <Bars />
-            <NavMenu>
-                <NavLink exact to="/">Home</NavLink>
+            <LogoContainer>
+                <Logo src='/images/samich.jpg' alt="Logo" className="logo" />
+                <img src='/images/name.svg' alt="Logo" className="name-logo" />
+            </LogoContainer>
+            <MenuContainer>
+                <NavLink to="/">Home</NavLink>
                 <NavLink to="/add-recipe">Add Recipe</NavLink>
                 <NavLink onClick={toggleLogin}>Login</NavLink>
-            </NavMenu>
+            </MenuContainer>
+            <Bars onClick={toggleMenu} />
+            <MobileMenuContainer isOpen={isMenuOpen}>
+                <NavLink to="/" onClick={toggleMenu}>Home</NavLink>
+                <NavLink to="/add-recipe" onClick={toggleMenu}>Add Recipe</NavLink>
+                <NavLink onClick={toggleLogin}>Login</NavLink>
+            </MobileMenuContainer>
             <LoginPopup isOpen={isLoginOpen}>
                 <form>
                     <Input type="text" placeholder="Username" />
