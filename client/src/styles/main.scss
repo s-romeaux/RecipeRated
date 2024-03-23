@@ -70,11 +70,6 @@ button {
     /* Adjust padding as needed */
 }
 
-.news-container .category-columns .category-column {
-    background-color: white;
-    color: #1A3240; /* Text color matching the header background */
-}
-
 .news-columns {
     flex: 1;
     display: flex;
@@ -85,8 +80,8 @@ button {
 .news-column {
     flex: 1;
     /* Updated */
-    background-color: #628370;
-    color: #F1F2CC;
+    background-color: white;
+    color: #1A3240; /* Text color matching the header background */
     margin: 20px;
 }
 
@@ -94,6 +89,10 @@ button {
     list-style-type: none;
     padding: 0;
     margin-left: 20px;
+    text-align: center;
+    img {
+        width: 55%;
+    }
 }
 
 .news-column ul li {
@@ -109,6 +108,14 @@ button {
     margin-bottom: 60px;
 }
 
+.content.A {
+    text-align: center;
+
+    img {
+        margin: 0 auto; // Center horizontally
+        display: block;
+    }
+}
 
 .category-columns {
     flex: 1;
@@ -159,6 +166,7 @@ button {
     color: #F1F2CC;
     text-decoration: none;
 }
-body {
+
+#root {
     background-color: #2A4250;
-  }
+}
