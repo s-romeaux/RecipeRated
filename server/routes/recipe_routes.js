@@ -1,58 +1,26 @@
 const express = require('express');
 const router = express.Router();
-const RecipeController = require('../controllers/recipe_controller');
 const Recipe = require('../models/recipe');
+const recipeController = require('../controllers/recipe_controller');
 
-// Define routes for recipe-related operations
+// Route to get all recipes
+router.get('/', recipeController.renderHomePage);
 
-// GET all recipes
-router.get('/', RecipeController.getAllRecipes);
+// Route to get a recipe by ID
+router.get('/:id', recipeController.getRecipeById);
 
-// GET recipe by ID
-router.get('/:id', RecipeController.getRecipeById);
+// Route to add a new recipe
+router.post('/submit_recipe', recipeController.addRecipe);
 
-// Handle POST request to submit a new recipe
-router.post('/submit_recipe', async (req, res) => {
-    try {
-        // Create a new recipe instance
-        const newRecipe = new Recipe({
-            username: req.body.username,
-            recipeName: req.body.recipeName,
-            inspiration: req.body.inspiration,
-            specialtyDiets: req.body.specialtyDiets,
-            categories: req.body.categories,
-            serves: req.body.serves,
-            recipeImage: req.body.recipeImage,
-            prepTime: {
-                hours: req.body.prepHours,
-                minutes: req.body.prepMinutes
-            },
-            cookTime: {
-                hours: req.body.cookHours,
-                minutes: req.body.cookMinutes
-            },
-            totalTime: {
-                hours: req.body.totalHours,
-                minutes: req.body.totalMinutes
-            },
-            ingredients: req.body.ingredients,
-            instructions: req.body.instructions
-        });
+// Route to update a recipe by ID
+router.put('/:id', recipeController.updateRecipeById);
 
-        // Save the recipe to the database
-        await newRecipe.save();
+// Route to delete a recipe by ID
+router.delete('/:id', recipeController.deleteRecipeById);
 
-        res.status(201).json({ message: 'Recipe added successfully' });
-    } catch (err) {
-        console.error('Error adding recipe:', err);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-});
 
-// PUT update recipe by ID
-router.put('/:id', RecipeController.updateRecipeById);
-
-// DELETE recipe by ID
-router.delete('/:id', RecipeController.deleteRecipeById);
+// Route to get recipes by category
+router.get('/category/:category', recipeController.getRecipesByCategory);
 
 module.exports = router;
+
