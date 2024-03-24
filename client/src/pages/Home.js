@@ -29,26 +29,20 @@ function Home() {
                     <div className="news-column">
                         <h3>News</h3>
                         <div className="content.A">
-                        <ul>
-                        <p>It's fun to cook.</p>
-                        </ul>
+                        <ul><img src="/images/1.svg" alt="leek announcement" /></ul>
                         </div>
                     </div>
                     <div className="news-column">
-                        <h3>Éntré to Win!</h3>
+                        <h3>Entrée to Win!</h3>
                         <div className="content.B">
-                        <ul>
-                        <p>Enter This Contest</p>
-                        </ul>
+                        <ul><img src="/images/2.svg" alt="contest info" /></ul>
                         </div>
                         {/* Add more categories as needed */}
                     </div>
                     <div className="news-column">
                         <h3>Employee of the Month</h3>
                         <div className="content.C">
-                        <ul>
-                            <p>Vegetable of the Month</p>
-                        </ul>
+                        <ul><img src="/images/3.svg" alt="employee of the month brok" /></ul>
                         </div>
                     </div>
                 </div>
@@ -57,7 +51,7 @@ function Home() {
                 <h1>Recipe Categories</h1>
                 {/* Display categories here */}
                 <div className="category-columns">
-                    <div className="category-column">
+                    <div className="category-column">                      
                         <h3>Meal Times</h3>
                         <div className="content">
                             <ul>
