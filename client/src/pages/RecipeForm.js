@@ -81,6 +81,7 @@ function RecipeForm({ username }) { // Accept username as a prop
             });
             if (response.ok) {
                 alert('Recipe added successfully');
+                window.location.href = '/';
             } else {
                 const errorMessage = await response.text();
                 throw new Error(errorMessage);

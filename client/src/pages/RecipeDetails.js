@@ -33,6 +33,25 @@ function RecipeDetails() {
 
   console.log('Recipe:', recipe); // Log the recipe state
 
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/recipes/${id}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        alert('Recipe deleted successfully');
+        window.location.href = '/';
+      } else {
+        const errorMessage = await response.text();
+        throw new Error(errorMessage);
+      }
+    } catch (error) {
+      console.error('Error deleting recipe:', error);
+      // Handle error, e.g., display error message to user
+    }
+  };
+  
+ 
   return (
     <div>
       {recipe && (
@@ -69,6 +88,10 @@ function RecipeDetails() {
           <h3>Total Time:</h3>
           <div className="recipe-instructions">
             Total Time: {recipe.totalTime.hours} hrs {recipe.totalTime.minutes} min
+          </div>
+          <div className="recipe-actions">
+            
+            <button onClick={handleDelete}>Delete Recipe</button>
           </div>
         </div>
       )}
