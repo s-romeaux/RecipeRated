@@ -15,8 +15,8 @@ router.post('/submit_recipe', recipeController.addRecipe);
 // Route to update a recipe by ID
 router.put('/:id', recipeController.updateRecipeById);
 
-// Route to delete a recipe by ID
-router.delete('/:id', recipeController.deleteRecipeById);
+// DELETE request to delete a recipe by ID
+router.delete('/:id', recipeController.deleteRecipeById);  
 
 
 // Route to get recipes by category
