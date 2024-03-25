@@ -10,6 +10,7 @@ router.get('/:id', UserController.getUserById);
 // POST create a new user
 router.post('/signup', UserController.createUser);
 
+router.post('/login', UserController.authenticateUser);
 
 module.exports = router;
 

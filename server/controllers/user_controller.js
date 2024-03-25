@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const bcrypt = require('bcrypt');
 
 // Controller functions for handling user-related operations
 
@@ -19,7 +20,11 @@ exports.getUserById = async (req, res) => {
 // Create a new user
 exports.createUser = async (req, res) => {
   try {
-    const newUser = new User(req.body);
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const newUser = new User({
+      ...req.body,
+      password: hashedPassword,
+    });
     await newUser.save();
     res.status(201).json(newUser);
     console.log("new login created")
@@ -29,3 +34,21 @@ exports.createUser = async (req, res) => {
   }
 };
 
+exports.authenticateUser = async (req, res) => {
+  try {
+    const user = await User.findOne({username: req.body.username});
+    if(!user){
+      return res.status(404).json({message: 'User not found'});
+    }
+
+    const match = await bcrypt.compare(req.body.password, user.password);
+    if (!match){
+      return res.status(401).json({message: 'Incorrect username or password'});
+    }
+
+    res.json(user);
+  } catch (error){
+    console.error('Error authenticating user:', error);
+    res.status(500).json({message: 'Internal Server Error'});
+  }
+}
