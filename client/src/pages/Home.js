@@ -11,6 +11,7 @@ function Home() {
             if (response.ok) {
                 const data = await response.json();
                 setRecipes(data);
+                document.body.classList.add('recipes-active'); // Add recipes-active class to body when recipes are fetched
             } else {
                 throw new Error('Failed to fetch recipes');
             }
@@ -18,6 +19,13 @@ function Home() {
             console.error('Error fetching recipes by category:', error);
         }
     };
+
+    // Hide recipes when clicking elsewhere on the page
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.recipes')) {
+            document.body.classList.remove('recipes-active'); // Remove recipes-active class from body
+        }
+    });
 
     return (
         <div className="main-content">
@@ -29,29 +37,29 @@ function Home() {
                     <div className="news-column">
                         <h3>News</h3>
                         <div className="content.A">
-                        <ul><img src="/images/1.svg" alt="leek announcement" /></ul>
+                            <ul><img src="/images/1.svg" alt="leek announcement" /></ul>
                         </div>
                     </div>
                     <div className="news-column">
                         <h3>Entrée to Win!</h3>
                         <div className="content.B">
-                        <ul><img src="/images/2.svg" alt="contest info" /></ul>
+                            <ul><img src="/images/2.svg" alt="contest info" /></ul>
                         </div>
                         {/* Add more categories as needed */}
                     </div>
                     <div className="news-column">
                         <h3>Employee of the Month</h3>
                         <div className="content.C">
-                        <ul><img src="/images/3.svg" alt="employee of the month brok" /></ul>
+                            <ul><img src="/images/3.svg" alt="employee of the month brok" /></ul>
                         </div>
                     </div>
                 </div>
-    
+
                 {/* Categories Section */}
                 <h1>Recipe Categories</h1>
                 {/* Display categories here */}
                 <div className="category-columns">
-                    <div className="category-column">                      
+                    <div className="category-column">
                         <h3>Meal Times</h3>
                         <div className="content">
                             <ul>
@@ -92,11 +100,13 @@ function Home() {
             </div>
             {/* Display recipes */}
             <div className="recipes">
-                {recipes.map(recipe => (
-                    <div key={recipe._id}>
-                        <Link to={`/recipes/${recipe._id}`}>{recipe.recipeName}</Link>
-                    </div>
-                ))}
+                {recipes
+                    .sort((a, b) => a.recipeName.localeCompare(b.recipeName)) // Sort recipes alphabetically by recipeName
+                    .map(recipe => (
+                        <div key={recipe._id}>
+                            <Link to={`/recipes/${recipe._id}`}>{recipe.recipeName}</Link>
+                        </div>
+                    ))}
             </div>
         </div>
     );
