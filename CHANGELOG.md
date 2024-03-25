@@ -1,5 +1,26 @@
 # JSZ's Recipe Vault
 
+### v1.0.0
+Deployment (NYI)
+
+### v0.3.1
+MongoDB storing of hashed passwords
+
+### v0.3.0
+MongoDB integration
+
+### v0.2.3
+User authentication functional
+
+### v0.2.2
+Integrated authenticateUser route
+
+### v0.2.1
+Passwords hashing for MongoDB
+
+### v0.2.0
+BCrypt Integration for Authentication
+
 ### v0.1.3
 README designed
 

@@ -10,7 +10,7 @@ Users can share information about recipes such as the ingredients, the time it t
 
 ## How do I use the app?
 
-[Click Here](PutLinkHereLater)
+[Click this sentence, or go to recipevault.zachplatypus.com](http://recipevault.zachplatypus.com/)
 
 ## Created By
 
