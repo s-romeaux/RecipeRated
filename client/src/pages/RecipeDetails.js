@@ -5,6 +5,7 @@ import '../styles/recipedetails.css';
 function RecipeDetails() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
+  const [user, setUser] = useState(null); // State to store user details
 
   // Log the id to check if it's being passed correctly
   console.log('Recipe ID:', id);
@@ -17,17 +18,27 @@ function RecipeDetails() {
       try {
         const response = await fetch(`http://localhost:5000/recipes/${id}`);
         if (response.ok) {
-          const data = await response.json();
-          console.log('Fetched Recipe:', data); // Log the fetched recipe data
-          setRecipe(data);
+          const recipeData = await response.json();
+          console.log('Fetched Recipe:', recipeData); // Log the fetched recipe data
+          setRecipe(recipeData);
+          
+          // Fetch user data by username
+          const userResponse = await fetch(`http://localhost:5000/users/${recipeData.username}`);
+          if (userResponse.ok) {
+            const userData = await userResponse.json();
+            console.log('Fetched User:', userData); // Log the fetched user data
+            setUser(userData); // Assuming you have setUser function to set user data
+          } else {
+            throw new Error('Failed to fetch user data');
+          }
         } else {
           throw new Error('Failed to fetch recipe details');
         }
       } catch (error) {
-        console.error('Error fetching recipe details:', error);
+        console.error('Error fetching data:', error);
       }
     };
-
+  
     fetchRecipeDetails();
   }, [id]);
 
@@ -57,7 +68,7 @@ function RecipeDetails() {
       {recipe && (
         <div className="recipe-container">
           <img src={recipe.recipeImage} alt={recipe.recipeName} className="recipe-image" />
-          <p style={{ textAlign: 'right' }}>Nomilicious Contribution By: {recipe.username}</p>
+          <p style={{ textAlign: 'right' }}>Nomilicious Contribution By: {user && user.username}</p>
           <h2 className="recipe-title">{recipe.recipeName}</h2>
           <div className="recipe-details">
             <span className="recipe-category">Categories:</span>

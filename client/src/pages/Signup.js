@@ -70,7 +70,8 @@ const SignUpPage = () => {
         });
   
         if (response.ok) {
-            alert('New user created,');
+            alert(`'Successful signup`);
+            window.location.href = '/';
         } else {
             const errorMessage = await response.text();
             throw new Error(errorMessage);
