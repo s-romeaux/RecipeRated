@@ -101,7 +101,6 @@ function RecipeDetails() {
             Total Time: {recipe.totalTime.hours} hrs {recipe.totalTime.minutes} min
           </div>
           <div className="recipe-actions">
-            
             <button onClick={handleDelete}>Delete Recipe</button>
           </div>
         </div>
