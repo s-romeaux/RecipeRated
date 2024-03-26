@@ -139,8 +139,8 @@ function RecipeForm({ username }) { // Accept username as a prop
                             <option value="Pies">Pies</option>
                         </optgroup>
                         <optgroup label="Beverages">
-                            <option value="For Minors 🧃">Minor Friendly 🧃</option>
-                            <option value="For Miners 🍹⛏️">Miner Friendly 🍹⛏️</option>
+                            <option value="Minor friendly 🧃">Minor Friendly 🧃</option>
+                            <option value="Miner Friendly 🍹⛏️">Miner Friendly 🍹⛏️</option>
                         </optgroup>
                     </select><br /><br />
 
