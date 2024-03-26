@@ -169,12 +169,8 @@ h2 {
   background-color: #2A4250;
 }
 
-.recipes {
-  padding-top: 170px;
-}
-
 div.recipes {
-  background-color: rgba(42, 66, 80, 0.3960784314);
+  background-color: rgba(42, 66, 80, 0.918);
   padding-top: 170px;
   position: fixed; /* Set the position to fixed */
   top: 0; /* Align the recipes div to the top of the viewport */
@@ -202,4 +198,5 @@ div.recipes a:visited {
 body.recipes-active div.recipes {
   display: block;
   transform: translateX(0); /* Slide in from the right */
+  padding-top: 170px;
 }/*# sourceMappingURL=main.css.map */
