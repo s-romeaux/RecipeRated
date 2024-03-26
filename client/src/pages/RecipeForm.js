@@ -10,12 +10,12 @@ function RecipeForm({ username }) { // Accept username as a prop
         categories: '',
         serves: 0,
         recipeImage: '',
-        prepHours: 0,
-        prepMinutes: 0,
-        cookHours: 0,
-        cookMinutes: 0,
-        totalHours: 0,
-        totalMinutes: 0,
+        prepHours: '',
+        prepMinutes: '',
+        cookHours: '',
+        cookMinutes: '',
+        totalHours: '',
+        totalMinutes: '',
         ingredients: [{ quantity: '', unit: '', name: '' }],
         instructions: ''
     });
