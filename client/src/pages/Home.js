@@ -86,7 +86,7 @@ function Home() {
                         <div className="content">
                             <ul>
                                 <li><Link onClick={() => fetchRecipesByCategory('Cookies')}>Cookies</Link></li>
-                                <li><Link onClick={() => fetchRecipesByCategory('Cakes/Frosting')}>Cakes</Link></li>
+                                <li><Link onClick={() => fetchRecipesByCategory('Cakes')}>Cakes</Link></li>
                                 <li><Link onClick={() => fetchRecipesByCategory('Pies')}>Pies</Link></li>
                             </ul>
                         </div>
