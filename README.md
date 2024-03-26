@@ -1,4 +1,4 @@
-# JSZ's Recipe Vault
+# JSZ's Recipe Exchange v1.0.0
 
 Milestone Project #3 for UNLV Software Development Bootcamp
 
